@@ -1,4 +1,5 @@
 <style>
+
 input {
   text-align: center;
   font-size: 1.5em;

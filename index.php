@@ -10,8 +10,20 @@ include "funcs.php";
     <title>Demineurs</title>
 </head>
 
+<style>
+body {
+    background-color: dodgerblue;
+    text-align: center;
+}
+input {
+    background-color: #ffad00;
+    padding: 10px 5px;
+    
+}
+
+</style>
 <body>
-    <h1>Welcome</h1>
+    <h1>Demineurs 😃</h1>
     <form action="game.php">
         <?php
             $id = gen_uuid();
