@@ -29,8 +29,7 @@ function gen_uuid()
   );
 }
 
-function is_new_game($id)
-{
+function is_new_game($id) {
   global $conn;
   $sql = "SELECT * FROM games WHERE game_id = '$id'";
   if (mysqli_query($conn, $sql)->num_rows == 0) {
@@ -39,8 +38,7 @@ function is_new_game($id)
   return false;
 }
 
-function init_game($id, $data, $status)
-{
+function init_game($id, $data, $status) {
   global $conn;
   $sql = "INSERT INTO `games` (`game_id`, `data`, `status`) VALUES ('$id', '$data', '$status');";
   mysqli_query($conn, $sql);
@@ -60,8 +58,7 @@ function get_game_data($id) {
   return $row[1];
 }
 
-function gen_data($rows)
-{
+function gen_data($rows) {
   $result = explode(",", get_game_data($_GET["id"]));
   $result = array_filter($result);
   $result = $result[count($result) - 1];
@@ -136,9 +133,43 @@ function draw_data($data, $size) {
   echo "<form id='form'>";
   foreach ($data as $index => $val) {
     if ($val == "-" || str_contains($val, "h")) {
-      $val = "";
+      $display = "";
+    } 
+    else if ($val == "+") {
+      $display = "💣";
     }
-    echo "<input type='text' value='$val' class='field field_hidden' readonly='readonly' style='width:$percent%; cursor: pointer' id='$index' $disabled>";
+    else if ($val == "0s") {
+      $display = "⓿";
+    }
+    else if ($val == "1s") {
+      $display = "❶";
+    }
+    else if ($val == "2s") {
+      $display = "❷";
+    }
+    else if ($val == "3s") {
+      $display = "❸";
+    }
+    else if ($val == "4s") {
+      $display = "❹";
+    }
+    else if ($val == "5s") {
+      $display = "❺";
+    }
+    else if ($val == "6s") {
+      $display = "❻";
+    }
+    else if ($val == "7s") {
+      $display = "❼";
+    }
+    else if ($val == "8s") {
+      $display = "❽";
+    }
+    
+    else {
+      $display = $val;
+    }
+    echo "<input type='text' value='$display' class='field field_hidden' readonly='readonly' style='width:$percent%; cursor: pointer' id='$index' $disabled>";
     $c++;
     if ($c == $size) {
       echo "<br>";

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 include "db.php";
 include "funcs.php";
 ?>
@@ -23,7 +20,7 @@ include "funcs.php";
             echo "<input type='hidden' name='id' value=$id>"
         ?>
         <label for="easy">easy</label>
-        <input type="radio" name="diff" id="easy" value="easy" selected>
+        <input type="radio" name="diff" id="easy" value="easy" checked>
         <label for="medium">medium</label>
         <input type="radio" name="diff" id="medium" value="medium">
         <label for="hard">hard</label>

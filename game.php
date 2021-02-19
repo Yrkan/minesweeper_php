@@ -1,16 +1,12 @@
 <style>
 input {
   text-align: center;
-  /*background: url(images/test.jpg) no-repeat scroll 7px 7px;
-  background-position: center;*/
+  font-size: 1.5em;
 }
 
 </style>
 
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 
 include "funcs.php";
 session_start();
@@ -33,18 +29,18 @@ if (is_new_game($id)) {
 }
 switch ($diff) {
   case 'easy':
-    $data = gen_data(4);
-    draw_data($data, 4);
-    break;
-
-  case 'medium':
     $data = gen_data(8);
     draw_data($data, 8);
     break;
 
+  case 'medium':
+    $data = gen_data(14);
+    draw_data($data, 14);
+    break;
+
   case 'hard':
-    $data = gen_data(12);
-    draw_data($data, 12);
+    $data = gen_data(20);
+    draw_data($data, 20);
     break;
   default:
     # code...
@@ -52,7 +48,7 @@ switch ($diff) {
 }
 
 echo "<h2>Partager le jeux</h2>";
-echo "<a href='http://localhost/spectate.php?id=$id&move=0'>spectate link</a>";
+echo "<a href='http://localhost/projet/spectate.php?id=$id&move=1&diff=$diff'>spectate link</a>";
 ?>
 
 <script>
